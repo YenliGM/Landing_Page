@@ -198,6 +198,7 @@ export default function App() {
 
       <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
 
+        {/* 01. ABOUT ME */}
         <section id="about me">
           <ContentBlock
             icon={<Bot color={colors.skyBlue} />}
@@ -207,6 +208,7 @@ export default function App() {
             imageLabel="IA Strategies" />
         </section>
 
+        {/* 02. WORK EXPERIENCE */}
         <section id="work experience">
           <h2 style={{ fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>02. Work Experience</h2>
           <ContentBlock
@@ -225,6 +227,7 @@ export default function App() {
             imageLabel="Business Management" />
         </section>
 
+        {/* 03. EDUCATION */}
         <section id="education">
           <ContentBlock
             reverse
@@ -235,6 +238,7 @@ export default function App() {
             imageLabel="Bachelor Cuba" />
         </section>
 
+        {/* 05. CERTIFICATIONS */}
         <section id="certifications">
           <ContentBlock
             icon={<Award color={colors.skyBlue} />}
@@ -249,6 +253,7 @@ export default function App() {
             </div>} />
         </section>
 
+        {/* 05. BEYOND THE CODE */}
         <section id="beyond the code">
           <ContentBlock
             reverse
@@ -259,13 +264,77 @@ export default function App() {
             imageLabel="Nature Exploration" />
         </section>
 
+        {/* 06. LANGUAGES COM BANDEIRAS REAIS */}
         <section id="languages">
-          <div style={{ textAlign: 'center', padding: '40px', border: `1px solid ${colors.primaryIndigo}33`, borderRadius: '20px', marginBottom: '80px' }}>
-            <h3 style={{ fontFamily: 'Allerta Stencil', color: colors.skyBlue }}><Globe size={20} /> Languages</h3>
-            <p> Spanish (Native)  |  Portuguese (Fluent)  |  English (Fluent) </p>
+          <div style={{ 
+            textAlign: 'center', 
+            padding: '40px', 
+            border: `1px solid ${colors.primaryIndigo}33`, 
+            borderRadius: '20px', 
+            marginBottom: '80px',
+            backgroundColor: 'rgba(255,255,255,0.01)'
+          }}>
+            <h3 style={{ 
+              fontFamily: 'Allerta Stencil', 
+              color: colors.skyBlue, 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              gap: '10px',
+              marginBottom: '30px' 
+            }}>
+              <Globe size={24} /> Languages
+            </h3>
+            
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap', 
+              gap: '60px' 
+            }}>
+              {/* Espanhol - Nativo */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                <img 
+                  src="https://flagcdn.com/w80/es.png" 
+                  alt="Spain Flag" 
+                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
+                />
+                <div>
+                  <p style={{ margin: 0, fontWeight: 'bold' }}>Spanish</p>
+                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Native</p>
+                </div>
+              </div>
+
+              {/* Português - Fluente */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                <img 
+                  src="https://flagcdn.com/w80/br.png" 
+                  alt="Brazil Flag" 
+                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
+                />
+                <div>
+                  <p style={{ margin: 0, fontWeight: 'bold' }}>Portuguese</p>
+                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Fluent</p>
+                </div>
+              </div>
+
+              {/* Inglês - Fluente */}
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                <img 
+                  src="https://flagcdn.com/w80/us.png" 
+                  alt="USA Flag" 
+                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
+                />
+                <div>
+                  <p style={{ margin: 0, fontWeight: 'bold' }}>English</p>
+                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Fluent</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
+        {/* 07. LETS CONECT */}
         <section id="lets conect" style={{ textAlign: 'center', paddingBottom: '100px' }}>
           <h2 style={{ fontFamily: 'Allerta Stencil', fontSize: '3rem', color: colors.primaryIndigo }}>LET'S CONNECT</h2>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '30px' }}>
