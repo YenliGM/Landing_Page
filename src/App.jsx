@@ -14,61 +14,59 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Componente de Bloco com Animação corrigida
+  // Componente de Bloco com Efeito Hover e Scroll Margin
   const ContentBlock = ({ title, subtitle, text, icon, imageLabel, reverse = false, list = null }) => (
     <motion.div 
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ 
+        y: -10, 
+        backgroundColor: 'rgba(75, 69, 203, 0.05)',
+        borderColor: 'rgba(75, 69, 203, 0.4)',
+        transition: { duration: 0.3 }
+      }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
       style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
         gap: '40px', 
         alignItems: 'center',
-        marginBottom: '80px',
+        marginBottom: '60px',
         backgroundColor: 'rgba(255,255,255,0.02)',
-        padding: '30px',
+        padding: '25px',
         borderRadius: '24px',
-        border: '1px solid rgba(75, 69, 203, 0.1)'
+        border: '1px solid rgba(75, 69, 203, 0.1)',
+        cursor: 'default',
+        scrollMarginTop: '110px' // Garante que a barra não cubra o título ao clicar
       }}
     >
       <div style={{ order: reverse ? 2 : 1 }}>
         <h3 style={{ fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2rem', display: 'flex', alignItems: 'center', gap: '15px', margin: '0 0 10px 0' }}>
           {icon} {title}
         </h3>
-        {subtitle && <p style={{ color: colors.skyBlue, fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.9rem', marginBottom: '15px' }}>{subtitle}</p>}
-        <p style={{ lineHeight: '1.7', opacity: 0.8 }}>{text}</p>
+        {subtitle && <p style={{ color: colors.skyBlue, fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: '15px' }}>{subtitle}</p>}
+        <p style={{ lineHeight: '1.7', opacity: 0.8, fontSize: '1rem' }}>{text}</p>
         {list && <ul style={{ marginTop: '15px', listStyle: 'none', padding: 0 }}>{list}</ul>}
       </div>
-
+      
       <div style={{ 
         order: reverse ? 1 : 2, 
-        backgroundColor: '#111', 
-        height: 'auto', 
-        borderRadius: '20px', 
-        display: 'block', 
-        alignItems: 'center', 
-        justifyContent: 'center',
-        border: `1px solid ${colors.primaryIndigo}33`,
+        backgroundColor: '#000', 
+        borderRadius: '15px', 
         overflow: 'hidden',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+        border: `1px solid ${colors.primaryIndigo}22`,
+        display: 'block'
       }}>
-      <img 
-        src={`/${imageLabel}.jpeg`} // O Vite busca direto na pasta public
-        alt={title}
-        style={{ 
-          width: '100%', 
-          height: '100%', 
-          objectFit: 'contain', 
-          padding: '10px'          
-        }}
-        onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Erro+ao+Carregar"; }} 
+        <img 
+          src={`/${imageLabel}.jpeg`} 
+          alt={title}
+          style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+          onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Check+FileName"; }} 
         />
       </div>
     </motion.div>
   );
-
+  
   return (
     <div style={{ backgroundColor: colors.darkBg, color: colors.ghostWhite, fontFamily: 'Anybody, sans-serif', minHeight: '100vh' }}>
       
@@ -199,18 +197,19 @@ export default function App() {
       <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
 
         {/* 01. ABOUT ME */}
-        <section id="about me">
+        <section>
+          <h2 id="about me" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>About Me</h2>
           <ContentBlock
             icon={<Bot color={colors.skyBlue} />}
-            title="01. About Me"
+            title="My Trajectory "
             subtitle="Where Logic Meets Strategy"
             text="I bridge the gap between developing AI agents and the business vision required to deploy them effectively. My focus is on building automated ecosystems that generate ROI and operational clarity while applying the best coding practices."
             imageLabel="IA Strategies" />
         </section>
 
         {/* 02. WORK EXPERIENCE */}
-        <section id="work experience">
-          <h2 style={{ fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>02. Work Experience</h2>
+        <section>
+          <h2 id="work experience" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>Work Experince</h2>
           <ContentBlock
             reverse
             icon={<Briefcase color={colors.skyBlue} />}
@@ -228,21 +227,23 @@ export default function App() {
         </section>
 
         {/* 03. EDUCATION */}
-        <section id="education">
+        <section>
+          <h2 id="education" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>Education</h2>
           <ContentBlock
             reverse
             icon={<GraduationCap color={colors.skyBlue} />}
-            title="03. Education"
+            title="Academic Education"
             subtitle="University of Havana, Cuba"
             text="B.S. in Computer Science. My foundation was built in an environment of high academic rigor, teaching me resilience and resource maximization."
             imageLabel="Bachelor Cuba" />
         </section>
 
-        {/* 05. CERTIFICATIONS */}
-        <section id="certifications">
+        {/* 04. CERTIFICATIONS */}
+        <section>
+          <h2 id="certifications" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>Certifications</h2>
           <ContentBlock
             icon={<Award color={colors.skyBlue} />}
-            title="Certifications"
+            title="Diplomas and Certifications"
             subtitle="Hybrid Professional"
             text="Balancing technical and business acumen:"
             imageLabel="Certifications"
@@ -254,18 +255,21 @@ export default function App() {
         </section>
 
         {/* 05. BEYOND THE CODE */}
-        <section id="beyond the code">
+        <section>
+          <h2 id="beyond the code" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>Beyond the Code</h2>
           <ContentBlock
             reverse
             icon={<Heart color={colors.skyBlue} />}
-            title="04. Beyond the Code"
+            title="Beyond the Code"
             subtitle="Human Side & Interests"
             text="I keep my mind sharp through digital content creation, speleology, diving, and consistent fitness discipline."
             imageLabel="Nature Exploration" />
         </section>
 
-        {/* 06. LANGUAGES COM BANDEIRAS REAIS */}
-        <section id="languages">
+        {/* 06. LANGUAGES COM EFEITO HOVER */}
+        <section>
+          <h2 id="languages" style={{ scrollMarginTop: '120px', fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2.5rem', marginBottom: '40px' }}>Languages</h2>
+          
           <div style={{ 
             textAlign: 'center', 
             padding: '40px', 
@@ -281,9 +285,10 @@ export default function App() {
               alignItems: 'center', 
               justifyContent: 'center', 
               gap: '10px',
-              marginBottom: '30px' 
+              marginBottom: '40px' 
             }}>
-              <Globe size={24} /> Languages
+              <Globe size={24} /> 
+              Communication Without Borders
             </h3>
             
             <div style={{ 
@@ -292,58 +297,132 @@ export default function App() {
               flexWrap: 'wrap', 
               gap: '60px' 
             }}>
-              {/* Espanhol - Nativo */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <img 
-                  src="https://flagcdn.com/w80/es.png" 
-                  alt="Spain Flag" 
-                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
-                />
-                <div>
-                  <p style={{ margin: 0, fontWeight: 'bold' }}>Spanish</p>
-                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Native</p>
-                </div>
-              </div>
+              
+              {/* Mapeamento dos idiomas com efeito hover */}
+              {[
+                { name: 'Spanish', flag: 'es', level: 'Native' },
+                { name: 'Portuguese', flag: 'br', level: 'Fluent' },
+                { name: 'English', flag: 'us', level: 'Fluent' }
+              ].map((lang) => (
+                <motion.div 
+                  key={lang.name}
+                  whileHover={{ 
+                    scale: 1.1, 
+                    y: -10,
+                    filter: 'drop-shadow(0px 0px 8px rgba(75, 69, 203, 0.5))'
+                  }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    gap: '12px',
+                    cursor: 'default' 
+                  }}
+                >
+                  <img 
+                    src={`https://flagcdn.com/w80/${lang.flag}.png`} 
+                    alt={`${lang.name} Flag`} 
+                    style={{ 
+                      width: '50px', 
+                      height: '50px', 
+                      borderRadius: '50%', 
+                      objectFit: 'cover', 
+                      border: `2px solid ${colors.primaryIndigo}44` 
+                    }} 
+                  />
+                  <div>
+                    <p style={{ margin: 0, fontWeight: 'bold', color: colors.ghostWhite }}>{lang.name}</p>
+                    <p style={{ 
+                      margin: 0, 
+                      fontSize: '0.7rem', 
+                      opacity: 0.5, 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '1px' 
+                    }}>
+                      {lang.level}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
 
-              {/* Português - Fluente */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <img 
-                  src="https://flagcdn.com/w80/br.png" 
-                  alt="Brazil Flag" 
-                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
-                />
-                <div>
-                  <p style={{ margin: 0, fontWeight: 'bold' }}>Portuguese</p>
-                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Fluent</p>
-                </div>
-              </div>
-
-              {/* Inglês - Fluente */}
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
-                <img 
-                  src="https://flagcdn.com/w80/us.png" 
-                  alt="USA Flag" 
-                  style={{ width: '45px', height: '45px', borderRadius: '50%', objectFit: 'cover', border: `2px solid ${colors.primaryIndigo}44` }} 
-                />
-                <div>
-                  <p style={{ margin: 0, fontWeight: 'bold' }}>English</p>
-                  <p style={{ margin: 0, fontSize: '0.7rem', opacity: 0.5, textTransform: 'uppercase', letterSpacing: '1px' }}>Fluent</p>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* 07. LETS CONECT */}
-        <section id="lets conect" style={{ textAlign: 'center', paddingBottom: '100px' }}>
-          <h2 style={{ fontFamily: 'Allerta Stencil', fontSize: '3rem', color: colors.primaryIndigo }}>LET'S CONNECT</h2>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '30px' }}>
-            <a href="https://www.linkedin.com/in/yenli-machado-a1530024b" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: '#111', color: colors.skyBlue, padding: '15px 30px', borderRadius: '50px', textDecoration: 'none', border: '1px solid #333' }}>
+        {/* 07. LETS CONNECT COM EFEITO HOVER */}
+        <section>
+          <h2 id="lets conect" style={{ 
+            scrollMarginTop: '120px', 
+            fontFamily: 'Allerta Stencil', 
+            fontSize: '3rem', 
+            color: colors.primaryIndigo, 
+            textAlign: 'center' 
+          }}>
+            LET'S CONNECT
+          </h2>
+
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            gap: '20px', 
+            marginTop: '30px', 
+            paddingBottom: '100px' 
+          }}>
+            
+            {/* Botão LinkedIn */}
+            <motion.a 
+              href="https://www.linkedin.com/in/yenli-machado-a1530024b" 
+              target="_blank" 
+              rel="noreferrer"
+              whileHover={{ 
+                scale: 1.05, 
+                y: -5, 
+                borderColor: colors.primaryIndigo,
+                boxShadow: `0px 10px 20px rgba(75, 69, 203, 0.2)`
+              }}
+              whileTap={{ scale: 0.95 }}
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '10px', 
+                backgroundColor: '#111', 
+                color: colors.skyBlue, 
+                padding: '15px 30px', 
+                borderRadius: '50px', 
+                textDecoration: 'none', 
+                border: '1px solid #333',
+                transition: 'border-color 0.3s'
+              }}
+            >
               <Linkedin size={20} /> LinkedIn
-            </a>
-            <a href="mailto:yengmpro@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '10px', backgroundColor: colors.primaryIndigo, color: 'white', padding: '15px 30px', borderRadius: '50px', textDecoration: 'none' }}>
+            </motion.a>
+
+            {/* Botão Email */}
+            <motion.a 
+              href="mailto:yengmpro@gmail.com" 
+              whileHover={{ 
+                scale: 1.05, 
+                y: -5,
+                filter: 'brightness(1.2)',
+                boxShadow: `0px 10px 20px rgba(75, 69, 203, 0.3)`
+              }}
+              whileTap={{ scale: 0.95 }}
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '10px', 
+                backgroundColor: colors.primaryIndigo, 
+                color: 'white', 
+                padding: '15px 30px', 
+                borderRadius: '50px', 
+                textDecoration: 'none',
+                fontWeight: 'bold'
+              }}
+            >
               <Mail size={20} /> Email
-            </a>
+            </motion.a>
+
           </div>
         </section>
 
