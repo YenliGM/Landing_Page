@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Isso aplica suas preferências globais  */
+body {
+  background-color: #03050b; /*  */
+  color: #fdfffc; /*  */
+  font-family: 'Anybody', sans-serif; /*  */
+}
+
+h1, h2, h3 {
+  font-family: 'Allerta Stencil', sans-serif; /*  */
+}
