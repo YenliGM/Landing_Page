@@ -1,8 +1,12 @@
-import {useState} from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Briefcase, GraduationCap, Linkedin, Mail, Zap, Award, Globe, Heart } from 'lucide-react';
+import { 
+  Bot, Briefcase, GraduationCap, Linkedin, Mail, Zap, 
+  Award, Globe, Heart, ChevronLeft, ChevronRight, 
+  Send, Sparkles, Loader2 
+} from 'lucide-react';
 import AIAgentConsultant from './IA_Agent';
-
+import ImageCarousel from './Carousel'; // Nome corrigido aqui
 
 export default function App() {
   const colors = {
@@ -16,58 +20,78 @@ export default function App() {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Componente de Bloco com Efeito Hover e Scroll Margin
-  const ContentBlock = ({ title, subtitle, text, icon, imageLabel, reverse = false, list = null }) => (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ 
-        y: -10, 
-        backgroundColor: 'rgba(75, 69, 203, 0.05)',
-        borderColor: 'rgba(75, 69, 203, 0.4)',
-        transition: { duration: 0.3 }
-      }}
-      viewport={{ once: true }}
-      style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-        gap: '40px', 
-        alignItems: 'center',
-        marginBottom: '60px',
-        backgroundColor: 'rgba(255,255,255,0.02)',
-        padding: '25px',
-        borderRadius: '24px',
-        border: '1px solid rgba(75, 69, 203, 0.1)',
-        cursor: 'default',
-        scrollMarginTop: '110px' // Garante que a barra não cubra o título ao clicar
-      }}
-    >
-      <div style={{ order: reverse ? 2 : 1 }}>
-        <h3 style={{ fontFamily: 'Allerta Stencil', color: colors.primaryIndigo, fontSize: '2rem', display: 'flex', alignItems: 'center', gap: '15px', margin: '0 0 10px 0' }}>
-          {icon} {title}
-        </h3>
-        {subtitle && <p style={{ color: colors.skyBlue, fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: '15px' }}>{subtitle}</p>}
-        <p style={{ lineHeight: '1.7', opacity: 0.8, fontSize: '1rem' }}>{text}</p>
-        {list && <ul style={{ marginTop: '15px', listStyle: 'none', padding: 0 }}>{list}</ul>}
-      </div>
-      
-      <div style={{ 
-        order: reverse ? 1 : 2, 
-        backgroundColor: '#000', 
-        borderRadius: '15px', 
-        overflow: 'hidden',
-        border: `1px solid ${colors.primaryIndigo}22`,
-        display: 'block'
-      }}>
-        <img 
-          src={`/${imageLabel}`} 
-          alt={title}
-          style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
-          onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Check+FileName"; }} 
-        />
-      </div>
-    </motion.div>
-  );
+  // Componente de Bloco movido para dentro para usar a constante 'colors' diretamente
+  const ContentBlock = ({ title, subtitle, text, icon, imageLabel, reverse = false, list = null }) => {
+    return (
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ 
+          y: -10, 
+          backgroundColor: 'rgba(75, 69, 203, 0.05)',
+          borderColor: 'rgba(75, 69, 203, 0.4)',
+          transition: { duration: 0.3 }
+        }}
+        viewport={{ once: true }}
+        style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gap: '40px', 
+          alignItems: 'center',
+          marginBottom: '60px',
+          backgroundColor: 'rgba(255,255,255,0.02)',
+          padding: '25px',
+          borderRadius: '24px',
+          border: '1px solid rgba(75, 69, 203, 0.1)',
+          cursor: 'default',
+          scrollMarginTop: '110px'
+        }}
+      >
+        <div style={{ order: reverse ? 2 : 1 }}>
+          <h3 style={{ 
+            fontFamily: 'Allerta Stencil', 
+            color: colors.primaryIndigo, 
+            fontSize: '2rem', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '15px', 
+            margin: '0 0 10px 0' 
+          }}>
+            {icon} {title}
+          </h3>
+          {subtitle && (
+            <p style={{ color: colors.skyBlue, fontWeight: 'bold', textTransform: 'uppercase', fontSize: '0.8rem', marginBottom: '15px' }}>
+              {subtitle}
+            </p>
+          )}
+          <p style={{ lineHeight: '1.7', opacity: 0.8, fontSize: '1rem' }}>{text}</p>
+          {list && <ul style={{ marginTop: '15px', listStyle: 'none', padding: 0 }}>{list}</ul>}
+        </div>
+        
+        <div style={{ 
+          order: reverse ? 1 : 2, 
+          backgroundColor: '#000', 
+          borderRadius: '15px', 
+          overflow: 'hidden',
+          border: `1px solid ${colors.primaryIndigo}22`,
+          display: 'block',
+          aspectRatio: '4/3',
+          position: 'relative'
+        }}>
+          {Array.isArray(imageLabel) ? (
+            <ImageCarousel images={imageLabel} />
+          ) : (
+            <img 
+              src={`/${imageLabel}`} 
+              alt={title}
+              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain' }}
+              onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Check+FileName"; }} 
+            />
+          )}
+        </div>
+      </motion.div>
+    );
+  };
   
   return (
     <div style={{ backgroundColor: colors.darkBg, color: colors.ghostWhite, fontFamily: 'Anybody, sans-serif', minHeight: '100vh' }}>
@@ -248,7 +272,14 @@ export default function App() {
             title="Diplomas and Certifications"
             subtitle="Hybrid Professional"
             text="Balancing technical and business acumen:"
-            imageLabel="Certifications.png"
+
+            imageLabel={[
+              "Certifications_1.png", 
+              "Certifications_2.png", 
+              "Certifications_3.png"
+            ]}
+            colors={colors}
+
             list={<div style={{ display: 'grid', gap: '10px', fontSize: '0.9rem' }}>
               <li style={{ display: 'flex', gap: '10px' }}><Zap size={16} color={colors.primaryIndigo} /> Tech: Python, SQL, Algorithms & AI Agents</li>
               <li style={{ display: 'flex', gap: '10px' }}><Zap size={16} color={colors.primaryIndigo} /> Business: SEBRAE Cash Flow & Management</li>
