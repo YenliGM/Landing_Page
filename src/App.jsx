@@ -297,7 +297,7 @@ export default function App() {
             subtitle="Human Side & Interests"
             text="I keep my mind sharp through digital content creation, speleology, diving, and consistent fitness discipline."
             imageLabel="Nature Exploration.jpg" />
-        </section>
+        </section> 
 
         {/* 06. LANGUAGES COM EFEITO HOVER */}
         <section>
