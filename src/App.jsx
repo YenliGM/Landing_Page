@@ -35,12 +35,12 @@ export default function App() {
         viewport={{ once: true }}
         style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
           gap: '40px', 
           alignItems: 'center',
           marginBottom: '60px',
           backgroundColor: 'rgba(255,255,255,0.02)',
-          padding: '25px',
+          padding: 'clamp(15px, 5vw, 25px)',
           borderRadius: '24px',
           border: '1px solid rgba(75, 69, 203, 0.1)',
           cursor: 'default',
