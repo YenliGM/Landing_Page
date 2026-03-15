@@ -1,6 +1,8 @@
-import React from 'react';
+import {useState} from 'react';
 import { motion } from 'framer-motion';
 import { Bot, Briefcase, GraduationCap, Linkedin, Mail, Zap, Award, Globe, Heart } from 'lucide-react';
+import AIAgentConsultant from './IA_Agent';
+
 
 export default function App() {
   const colors = {
@@ -431,6 +433,9 @@ export default function App() {
       <footer style={{ textAlign: 'center', padding: '40px', opacity: 0.3, fontSize: '10px', letterSpacing: '2px' }}>
         YENLI MACHADO © 2026 | BUILT FOR THE INTERNATIONAL AI MARKET
       </footer>
+
+      <AIAgentConsultant />
+
     </div>
   );
 }
