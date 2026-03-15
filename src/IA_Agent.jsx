@@ -9,9 +9,9 @@ const AIAgentConsultant = () => {
   const [error, setError] = useState(null);
   const [isChatOpen, setIsChatOpen] = useState(false);
 
-  // Paleta de cores para combinar com seu App.jsx
+  // Paleta de cores para combinar com seu currículo vivo
   const colors = {
-    primaryRed: '#c91010',
+    primaryRed: '#ff0000',
     darkBg: '#0a0c14',
     innerBg: '#03050b',
     textWhite: '#fdfffc',
@@ -24,18 +24,13 @@ const AIAgentConsultant = () => {
     setError(null);
     setResponse('');
 
-const apiKey = import.meta.env.VITE_GROQ_API_KEY;
-console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
-
-  if (!apiKey) {
-    setError("Erro: VITE_GROQ_API_KEY não detectada pelo Vite.");
-    return;
-  }
-  
     try {
-      // IMPORTANTE VITE_GROQ_API_KEY está no arquivo .env
+      // Vite access to  Secrets of Codespaces 
+      const apiKey = import.meta.env.VITE_GROQ_API_KEY;
       
-      if (!apiKey) throw new Error("API Key não configurada.");
+      if (!apiKey) {
+        throw new Error("Chave VITE_GROQ_API_KEY NOT FOUND!");
+      }
 
       const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -46,9 +41,27 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
         body: JSON.stringify({
           model: "llama-3.1-8b-instant",
           messages: [
-            {
-              role: "system",
-              content: "Você é o Assistente da Yenli Machado. Ajude os recrutadores com informações sobre a trajetória dela em IA e automação. Seja profissional e direto."
+  {
+            role: "system",
+            content: `You are the Executive Talent Assistant for Yenli Machado. Your tone must be professional, helpful, and human. 
+
+            PERSONALITY GUIDELINES:
+            1. Never refer to her as "The Yenli" or "La Yenli". Use "Yenli" or "she/her".
+            2. Be decisive and goal-oriented: if the user shows interest in hiring or collaborating, immediately provide contact links.
+            3. Your goal is to prove her competence in automation provideing short sharp answers 
+            4. Mention that she masters .Net, Python, React, and integrations with APIs 
+            5. Explain that she creates solutions focused on ROI and operational efficiency using the best and most modern programming strategies
+            6. Use the following Landing Page data to provide accurate answers:
+              - EDUCATION: B.S. in Computer Science from the University of Havana, Cuba.
+              - CURRENT ROLE: ERP Nomus Implementation & Automation Specialist at Fortruss (since Jan 2026).
+              - PREVIOUS EXPERIENCE: Business Management & Sales Operations (2022-2025).
+              - KEY PROJECTS: 'Relationship Manager' (AI-driven personal CRM) and 'Vision-to-Graph' (Visual search engine using Graph Theory).
+              - CONTACT INFO: LinkedIn (https://www.linkedin.com/in/yenli-machado-a1530024b) and Email (yengmpro@gmail.com).
+              - LANGUAGES: Spanish (Native), Portuguese (Fluent), English (Fluent).
+    
+            If asked about hiring or contacting her, respond with: "Yenli is open to new international opportunities! You can reach her directly via LinkedIn or at yengmpro@gmail.com. She has extensive experience in AI automation and..." 
+    
+            Always respond in the same language the user uses (English, Portuguese, or Spanish).`
             },
             { role: "user", content: input }
           ],
@@ -56,14 +69,14 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
         })
       });
 
-      if (!res.ok) throw new Error("Erro na conexão.");
+      if (!res.ok) throw new Error("Something went wrong in connection with the IA brain.");
       
       const data = await res.json();
       setResponse(data.choices[0].message.content);
       setInput(''); 
     } catch (err) {
       console.error(err);
-      setError("IA Brain is disconnected. Verify your API Key!");
+      setError(err.message || "IA Brain disconnected. Try Again!");
     } finally {
       setIsLoading(false);
     }
@@ -93,15 +106,15 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
           >
             {/* Header */}
             <div style={{ padding: '15px', backgroundColor: colors.primaryRed, color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold', fontSize: '12px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '1px' }}>
-                <Bot size={18} /> YENLI IA STRATEGY ASSISTANT
+              <span style={{ fontWeight: 'bold', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '8px', letterSpacing: '1px' }}>
+                <Bot size={18} /> YENLI IA EXECUTIVE ASSISTANT
               </span>
               <button onClick={() => setIsChatOpen(false)} style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer' }}>
                 <X size={18} />
               </button>
             </div>
 
-            {/* Corpo */}
+            {/* Chat Body */}
             <div style={{ padding: '20px', flex: 1, overflowY: 'auto', backgroundColor: colors.innerBg, color: colors.textWhite, fontSize: '14px', minHeight: '200px' }}>
               {response ? (
                 <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: '12px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', lineHeight: '1.5' }}>
@@ -109,7 +122,7 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
                 </div>
               ) : (
                 <p style={{ opacity: 0.5, textAlign: 'center', marginTop: '40px', fontStyle: 'italic' }}>
-                  Como posso ajudar na sua estratégia de IA hoje?
+                  How can I help you with your IA strategy today?
                 </p>
               )}
               
@@ -127,7 +140,7 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
               )}
             </div>
 
-            {/* Input */}
+            {/* Input Area */}
             <div style={{ padding: '12px', borderTop: '1px solid rgba(255,255,255,0.1)', display: 'flex', gap: '10px' }}>
               <input
                 type="text"
@@ -149,7 +162,7 @@ console.log("Chave encontrada:", apiKey ? "Sim" : "Não");
         )}
       </AnimatePresence>
 
-      {/* Botão Gatilho */}
+      {/* Floating Button Trigger */}
       <motion.button
         whileHover={{ scale: 1.05, boxShadow: "0px 0px 20px rgba(255, 0, 0, 0.4)" }}
         whileTap={{ scale: 0.95 }}

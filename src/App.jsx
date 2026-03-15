@@ -60,7 +60,7 @@ export default function App() {
         display: 'block'
       }}>
         <img 
-          src={`/${imageLabel}.jpeg`} 
+          src={`/${imageLabel}`} 
           alt={title}
           style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
           onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Check+FileName"; }} 
@@ -206,7 +206,7 @@ export default function App() {
             title="My Trajectory "
             subtitle="Where Logic Meets Strategy"
             text="I bridge the gap between developing AI agents and the business vision required to deploy them effectively. My focus is on building automated ecosystems that generate ROI and operational clarity while applying the best coding practices."
-            imageLabel="IA Strategies" />
+            imageLabel="IA Strategies.png" />
         </section>
 
         {/* 02. WORK EXPERIENCE */}
@@ -218,14 +218,14 @@ export default function App() {
             title="Fortruss"
             subtitle="ERP Implementation & Automation | Jan 2026 - Present"
             text="Leading the implementation of the Nomus ERP system, performing process mapping, and API integration. Automating repetitive tasks to unlock team potential."
-            imageLabel="Fortruss Joinville" />
+            imageLabel="Fortruss Joinville.png" />
 
           <ContentBlock
             icon={<Briefcase color={colors.skyBlue} />}
             title="Entrepreneurial Experience"
             subtitle="Management & Sales | Mar 2022 - Oct 2025"
             text="Developed a 'business-owner mindset' managing teams, operations and negotiations. Every line of code must serve a commercial objective."
-            imageLabel="Business Management" />
+            imageLabel="Business Management.png" />
         </section>
 
         {/* 03. EDUCATION */}
@@ -237,7 +237,7 @@ export default function App() {
             title="Academic Education"
             subtitle="University of Havana, Cuba"
             text="B.S. in Computer Science. My foundation was built in an environment of high academic rigor, teaching me resilience and resource maximization."
-            imageLabel="Bachelor Cuba" />
+            imageLabel="Bachelor Cuba.jpeg" />
         </section>
 
         {/* 04. CERTIFICATIONS */}
@@ -248,7 +248,7 @@ export default function App() {
             title="Diplomas and Certifications"
             subtitle="Hybrid Professional"
             text="Balancing technical and business acumen:"
-            imageLabel="Certifications"
+            imageLabel="Certifications.png"
             list={<div style={{ display: 'grid', gap: '10px', fontSize: '0.9rem' }}>
               <li style={{ display: 'flex', gap: '10px' }}><Zap size={16} color={colors.primaryIndigo} /> Tech: Python, SQL, Algorithms & AI Agents</li>
               <li style={{ display: 'flex', gap: '10px' }}><Zap size={16} color={colors.primaryIndigo} /> Business: SEBRAE Cash Flow & Management</li>
@@ -265,7 +265,7 @@ export default function App() {
             title="Beyond the Code"
             subtitle="Human Side & Interests"
             text="I keep my mind sharp through digital content creation, speleology, diving, and consistent fitness discipline."
-            imageLabel="Nature Exploration" />
+            imageLabel="Nature Exploration.jpg" />
         </section>
 
         {/* 06. LANGUAGES COM EFEITO HOVER */}
