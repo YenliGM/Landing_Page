@@ -84,6 +84,7 @@ export default function App() {
             <img 
               src={`/${imageLabel}`} 
               alt={title}
+              loading="lazy"
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain' }}
               onError={(e) => { e.target.src = "https://via.placeholder.com/400x300?text=Check+FileName"; }} 
             />
