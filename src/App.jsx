@@ -36,9 +36,9 @@ export default function App() {
         style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
-          gap: '40px', 
+          gap: '30px', 
           alignItems: 'center',
-          marginBottom: '60px',
+          marginBottom: '40px',
           backgroundColor: 'rgba(255,255,255,0.02)',
           padding: 'clamp(15px, 5vw, 25px)',
           borderRadius: '24px',
