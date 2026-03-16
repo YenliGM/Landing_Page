@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Bot, Briefcase, GraduationCap, Linkedin, Mail, Zap, 
-  Award, Globe, Heart, Menu, X 
+  Award, Globe, Heart, Menu, X, ChevronUp 
 } from 'lucide-react';
 import AIAgentConsultant from './IA_Agent';
 import ImageCarousel from './Carousel';
@@ -10,11 +10,12 @@ import ImageCarousel from './Carousel';
 /**
  * COMPONENT: App
  * Description: Multilingual Professional Portfolio for Yenli Machado.
- * Features: Dynamic language switching, responsive design, Framer Motion animations.
+ * Features: Dynamic language switching, responsive design, and "Scroll to Top" functionality.
  */
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [lang, setLang] = useState('en'); // Default language: English
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Design System Colors
   const colors = {
@@ -23,6 +24,20 @@ export default function App() {
     darkBg: '#03050b',
     primaryIndigo: '#4b45cb'
   };
+
+  // Monitor scroll position to show/hide "Back to Top" button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Content Dictionary for Localization
   const t = {
@@ -35,7 +50,7 @@ export default function App() {
       aboutText: 'I am a Computer Science professional passionate about transforming complex processes into intelligent workflows. My journey began with a deep technical foundation in programming and evolved into strategic management, allowing me to bridge the gap between developing AI agents and the business vision required to deploy them effectively.',
       expTitle: 'Work Experience',
       fortrussSub: 'ERP Implementation & Automation | Jan 2026 - Present',
-      fortrussText: 'Leading the implementation of the Nomus ERP system, I operate at the forefront of digital transformation. My role goes beyond coding; I perform process mapping and API integration, ensuring technology aligns with the real-world needs of manufacturing.',
+      fortrussText: 'While leading the implementation of the Nomus ERP system, I operate at the forefront of digital transformation. My role goes beyond coding; I perform process mapping and API integration, ensuring technology aligns with the real-world needs of manufacturing.',
       entrepSub: 'Management & Sales | Mar 2022 - Oct 2025',
       entrepText: 'As a former business owner, I developed a "business-owner mindset." This experience provided me with soft skills like negotiation and understanding that every line of code must serve a commercial objective.',
       eduTitle: 'Education',
@@ -44,7 +59,7 @@ export default function App() {
       certTitle: 'Certifications',
       certSub: 'Hybrid Professional',
       certText: 'I am not just a coder; I am a professional who understands the ecosystem where that code lives:',
-      certList: ['Tech: Python, SQL, Algorithms & AI Agents', 'Business: SEBRAE Management', 'Finance: ANBIMA CPA 2026 - In Prep'],
+      certList: ['Tech: Python, SQL, Algorithms & AI Agents', 'Business: SEBRAE Cash Flow & Business Management', 'Finance: ANBIMA CPA 2026 - In Prep'],
       beyondTitle: 'Beyond the Code',
       beyondText: 'To keep my mind sharp, I embrace a lifestyle rooted in exploration and discipline. I find balance through speleology, recreational diving, and fitness training, which informs my approach to building resilient software architecture.',
       langTitle: 'Languages',
@@ -55,7 +70,7 @@ export default function App() {
     es: {
       nav: ['sobre mí', 'experiencia', 'educación', 'certificaciones', 'más allá del código', 'idiomas'],
       contact: 'CONTACTO',
-      heroSub: 'AI Agent Manager | Full-Stack AI Developer | AI Project Manager',
+      heroSub: 'Gestora de Agentes de IA | IA Full-Stack Programadora |  Gestora de Proyectos IA ',
       aboutTitle: 'Sobre Mí',
       aboutSub: 'Donde la Lógica se une a la Estrategia',
       aboutText: 'Soy una profesional de Ciencias de la Computación apasionada por transformar procesos complejos en flujos de trabajo inteligentes. Mi viaje comenzó con una sólida base técnica en programación y evolucionó hacia la gestión estratégica, permitiéndome cerrar la brecha entre el desarrollo de agentes de IA y la visión empresarial.',
@@ -63,7 +78,7 @@ export default function App() {
       fortrussSub: 'Implementación ERP y Automatización | Ene 2026 - Presente',
       fortrussText: 'Liderando la implementación del sistema ERP Nomus, opero a la vanguardia de la transformación digital. Mi función va más allá del código; realizo mapeo de procesos e integración de APIs, asegurando que la tecnología se alinee con las necesidades de fabricación.',
       entrepSub: 'Gestión y Ventas | Mar 2022 - Oct 2025',
-      entrepText: 'Como ex dueña de negocio, desarrollé una mentalidad empresarial. Esta experiencia me brindó habilidades blandas como la negociación y la comprensión de que cada línea de código debe cumplir un objetivo comercial.',
+      entrepText: 'Como ex dueña y fundadora de negocio, desarrollé una mentalidad empresarial. Esta experiencia me brindó habilidades blandas como la negociación y la comprensión de que cada línea de código debe cumplir un objetivo comercial.',
       eduTitle: 'Educación',
       eduSub: 'Universidad de La Habana, Cuba',
       eduText: 'Licenciatura en Ciencias de la Computación. Mi base técnica se construyó en un entorno de alto rigor académico. Estudiar en Cuba me enseñó resiliencia y cómo maximizar recursos, habilidades esenciales para desarrollar modelos de IA robustos.',
@@ -72,7 +87,7 @@ export default function App() {
       certText: 'No soy solo una programadora; soy una profesional que entiende el ecosistema donde vive ese código:',
       certList: ['Tech: Python, SQL, Algoritmos y Agentes de IA', 'Negocios: Gestión SEBRAE', 'Finanzas: ANBIMA CPA 2026 - En Prep'],
       beyondTitle: 'Más Allá del Código',
-      beyondText: 'Para mantener mi mente aguda, adopto un estilo de vida basado en la exploración y la disciplina. Encuentro equilibrio a través de la espeleología, el buceo recreativo y el entrenamiento físico, lo que informa mi enfoque para construir arquitectura de software resistente.',
+      beyondText: 'Para mantener mi mente aguda, adopto un estilo de vida basado en la exploración y la disciplina. Encuentro equilibrio a través de la espeleología, el buceo recreativo y el entrenamiento físico, lo que transforma mi enfoque para construir arquitectura de software resistente.',
       langTitle: 'Idiomas',
       langSub: 'Comunicación Sin Fronteras',
       connect: 'CONECTEMOS',
@@ -81,7 +96,7 @@ export default function App() {
     pt: {
       nav: ['sobre mim', 'experiência', 'educação', 'certificações', 'além do código', 'idiomas'],
       contact: 'CONTATO',
-      heroSub: 'AI Agent Manager | Full-Stack AI Developer | AI Project Manager',
+      heroSub: 'Gerente de Agentes de IA | Desenvolvedor Full-Stack de IA | Gerente de Projetos de IA',
       aboutTitle: 'Sobre Mim',
       aboutSub: 'Onde a Lógica Encontra a Estratégia',
       aboutText: 'Sou uma profissional de Ciência da Computação apaixonada por transformar processos complexos em fluxos de trabalho inteligentes. Minha jornada começou com uma base técnica profunda em programação e evoluiu para a gestão estratégica, permitindo-me unir o desenvolvimento de agentes de IA à visão de negócios.',
@@ -96,9 +111,9 @@ export default function App() {
       certTitle: 'Certificações',
       certSub: 'Profissional Híbrido',
       certText: 'Não sou apenas uma programadora; sou uma profissional que entende o ecossistema onde esse código vive:',
-      certList: ['Tech: Python, SQL, Algoritmos e Agentes de IA', 'Negócios: Gestão SEBRAE', 'Finanças: ANBIMA CPA 2026 - Em Prep'],
+      certList: ['Tech: Python, SQL, Algoritmos e Agentes de IA', 'Negócios: Gestão SEBRAE', 'Finanzas: ANBIMA CPA 2026 - Em Prep'],
       beyondTitle: 'Além do Código',
-      beyondText: 'Para manter minha mente afiada, adoto um estilo de vida baseado na exploração e disciplina. Encontro equilíbrio através da espeleologia, mergulho recreativo e musculação, que informam minha abordagem na construção de arquiteturas de software resilientes.',
+      beyondText: 'Para manter minha mente afiada, adoto um estilo de vida baseado na exploração e disciplina. Encontro equilíbrio através da espeleologia, mergulho recreativo e musculação, que transformam minha abordagem na construção de arquiteturas de software resilientes.',
       langTitle: 'Idiomas',
       langSub: 'Comunicação Sem Fronteiras',
       connect: 'VAMOS CONECTAR',
@@ -107,9 +122,13 @@ export default function App() {
   };
 
   const scrollTo = (index) => {
-    const id = t.en.nav[index]; // Always use English keys for IDs to maintain consistency
+    const id = t.en.nav[index]; 
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMenuOpen(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Reusable Content Block Component
@@ -267,6 +286,39 @@ export default function App() {
       <footer style={{ textAlign: 'center', padding: '40px', opacity: 0.3, fontSize: '10px', letterSpacing: '2px' }}>
         {t[lang].footer}
       </footer>
+
+      {/* FLOATING SCROLL TO TOP BUTTON */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.5 }}
+            whileHover={{ scale: 1.1, backgroundColor: colors.ghostWhite, color: colors.primaryIndigo }}
+            onClick={scrollToTop}
+            style={{
+              position: 'fixed',
+              bottom: '100px', // Positioned above the AI Agent
+              right: '30px',
+              width: '50px',
+              height: '50px',
+              borderRadius: '50%',
+              backgroundColor: colors.primaryIndigo,
+              color: 'white',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1001,
+              boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+              transition: 'background-color 0.3s ease'
+            }}
+          >
+            <ChevronUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AIAgentConsultant />
     </div>
