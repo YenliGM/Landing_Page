@@ -1,47 +1,56 @@
-# Professional AI Portfolio & Strategic Hub
+# Yenli Machado Professional AI Portfolio & Strategic Multilingual Hub
 
-## 🔗 Deployment
-The project is live and can be accessed at:
-- **Production:** [yenlimachado-landing-page.vercel.app](https://yenlimachado-landing-page-pi-ten-47.vercel.app/)
+## 🔗 Live Production
+- **Deployment:** [yenlimachado-landing-page.vercel.app](https://yenlimachado-landing-page.vercel.app/)
 
-A high-performance personal portfolio and AI interface designed for the international technology market. This project showcases the intersection between **Full-Stack Development**, **AI Agent Orchestration**, and **Business Process Automation**.
+A high-performance personal portfolio and AI interface designed for the international technology market. This project demonstrates the intersection of **Full-Stack Development**, **LLM Orchestration**, and **Global Accessibility**.
 
-## 🚀 The Vision
-This hub is more than a portfolio; it's a demonstration of modern web architecture and AI integration. It focuses on delivering a seamless user experience (UX) while maintaining a robust, scalable codebase.
+---
 
-## 🛠 Tech Stack
-* **Frontend:** React.js with Vite (Lightning-fast HMR).
-* **Styling:** Modern CSS-in-JS & Tailwind-inspired Glassmorphism.
-* **Animations:** Framer Motion (State-driven transitions & scroll reveals).
-* **Icons:** Lucide React (Minimalist vector iconography).
-* **AI Integration:** Custom-built "AI Agent Consultant" component.
+## 🚀 Key Features
 
-## ✨ Key Features
-
-### 1. Interactive Certification Carousel
-* **Dynamic Media Handling:** A custom-built component that detects data types and renders either a static image or an interactive gallery.
-* **User-Centric Design:** Smooth navigation with AnimatePresence transitions and touch-responsive indicators.
-* **Performance:** Implemented **Lazy Loading** to ensure high Core Web Vitals scores and instant initial page loads.
+### 1. Real-Time Multilingual Engine (i18n)
+* **Instant Context Switching:** Seamlessly toggle between **English (US)**, **Spanish (ES)**, and **Portuguese (BR)** without page reloads.
+* **State-Driven Localization:** Implemented a centralized dictionary architecture that updates the entire UI context—from navigation menus to deep project descriptions—instantly.
 
 ### 2. AI Agent Consultant Component
-* **Real-time Interaction:** A dedicated interface for professional consulting, demonstrating the ability to integrate Large Language Models (LLMs) into production environments.
-* **Custom Theming:** Deep integration with the project's visual identity using a "Primary Indigo" and "Sky Blue" color palette.
+* **LLM Integration:** A dedicated professional interface built to demonstrate the integration of Large Language Models (Gemini/Groq) into production environments.
+* **Personality-Driven UX:** Custom-themed interaction logic designed to act as a first-level consultant for recruiters and collaborators.
 
-### 3. Glassmorphic UI/UX
-* **Responsive Architecture:** Fully optimized for mobile, tablet, and desktop environments using CSS Grid and Flexbox.
-* **Advanced Hover States:** Intentional feedback loops using `whileHover` and `whileInView` triggers to increase user engagement.
+### 3. High-Fidelity Visual Interaction
+* **"Sparkle" Hover Logic:** Advanced state-driven hover effects on language selectors and icons, utilizing `framer-motion` for fluid, organic feedback.
+* **Glassmorphic UI:** Modern aesthetic using background blurs, primary indigo gradients, and sky-blue accents.
 
-## 👤 Professional Profile: Yenli Machado
+### 4. Interactive Certification Carousel
+* **Dynamic Media Handling:** Custom component that intelligently renders interactive galleries with `AnimatePresence` transitions.
+* **Optimization:** Fully responsive with lazy loading to ensure high performance and low Latency.
+
+---
+
+## 🛠 Tech Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Frontend** | React.js 18 (Vite), JavaScript (ES6+) |
+| **Animation** | Framer Motion (State-driven transitions) |
+| **AI Integration** | Google GenAI SDK / Groq API |
+| **Styling** | Modern CSS-in-JS, Glassmorphism, Liquid Typography (`clamp`) |
+| **Icons** | Lucide React |
+| **Deployment** | Vercel (CI/CD Pipeline) |
+
+---
+
+## 👤 About the Developer: Yenli Machado
 **AI Agent Manager | Full-Stack AI Developer | Project Strategist**
 
-I specialize in bridging the gap between technical complexity and business ROI. My background in **Computer Science (University of Havana)** combined with entrepreneurial experience in management allows me to build solutions that are not just "code," but strategic assets.
+Specializing in bridging the gap between technical complexity and business ROI. With a background in **Computer Science** and extensive experience in **ERP Implementation (Nomus)** and **Automation**, I build strategic assets rather than just code.
 
-* **Core Skills:** AI Automation, Python, React, SQL, ERP Implementation (Nomus), and Strategic Business Management.
-* **Focus:** Building automated ecosystems that unlock team potential and drive operational clarity.
+- **Core Expertise:** Python, React, AI Automation, SQL, and Business Process Mapping.
+- **Mission:** Building automated ecosystems that unlock human potential through intelligent software.
 
-## 📦 Deployment & Installation
+---
 
-To run this project locally or in a containerized environment (like GitHub Codespaces):
+## 📦 Local Setup
 
 1.  **Clone the repository:**
     ```bash
@@ -51,10 +60,16 @@ To run this project locally or in a containerized environment (like GitHub Codes
     ```bash
     npm install
     ```
-3.  **Launch development server:**
+3.  **Environment Variables:**
+    Create a `.env` file for your AI API keys:
+    ```env
+    VITE_GROQ_API_KEY=your_key_here
+    ```
+4.  **Run Development Server:**
     ```bash
     npm run dev
     ```
 
 ---
-Built by Yenli Machado 🤖 for the International AI Market.
+**Designed & Engineered by Yenli Machado** 🤖  
+*Strategic Solutions for the International AI Market.*
