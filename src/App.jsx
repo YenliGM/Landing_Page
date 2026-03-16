@@ -61,7 +61,7 @@ export default function App() {
       certText: 'I am not just a coder; I am a professional who understands the ecosystem where that code lives:',
       certList: ['Tech: Python, SQL, Algorithms & AI Agents', 'Business: SEBRAE Cash Flow & Business Management', 'Finance: ANBIMA CPA 2026 - In Prep'],
       beyondTitle: 'Beyond the Code',
-      beyondText: 'To keep my mind sharp, I embrace a lifestyle rooted in exploration and discipline. I find balance through speleology, recreational diving, and fitness training, which informs my approach to building resilient software architecture.',
+      beyondText: 'To keep my mind sharp, I embrace a lifestyle rooted in exploration and discipline. I find balance through speleology, recreational diving, and fitness training, which transform my approach to building resilient software architecture.',
       langTitle: 'Languages',
       langSub: 'Communication Without Borders',
       connect: "LET'S CONNECT",
